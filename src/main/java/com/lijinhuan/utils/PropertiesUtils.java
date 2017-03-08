@@ -5,9 +5,12 @@ package com.lijinhuan.utils;
  *
  */
 
+import java.awt.event.MouseWheelEvent;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
 public class PropertiesUtils{
@@ -18,7 +21,9 @@ public class PropertiesUtils{
 	static{
 		FileInputStream fileInputStream = null;
 		try {
-			fileInputStream = new FileInputStream("redis.properties");
+			String path = PropertiesUtils.class.getClassLoader().getResource("").getPath();
+			path = path + File.separator +"redis.properties";
+			fileInputStream = new FileInputStream(path);
 			PROPERTIES.load(fileInputStream);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -36,5 +41,9 @@ public class PropertiesUtils{
 	public static Object get(String key){
 		return PROPERTIES.get(key);
 	}
+
+//	public static void main(String[] args) throws IOException {
+//		System.out.println(PROPERTIES.get("REDIS_ADDR"));
+//	}
 }
 
