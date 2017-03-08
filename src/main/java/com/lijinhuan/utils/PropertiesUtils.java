@@ -38,8 +38,8 @@ public class PropertiesUtils{
 		}
 	}
 	
-	public static Object get(String key){
-		return PROPERTIES.get(key);
+	public static String get(String key){
+		return (String) PROPERTIES.get(key);
 	}
 
 //	public static void main(String[] args) throws IOException {
